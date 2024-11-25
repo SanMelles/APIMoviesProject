@@ -1,0 +1,59 @@
+openapi: 3.0.2
+info:
+    title: APIMoviesProject
+    version: 1.0.0
+    description: APIMoviesProject
+paths:
+    /movies:
+        get:
+            tags:
+                - Movies
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                List of movies:
+                                    value: |-
+                                        [
+                                            "Shawshank Redemption"'
+                                        ]
+                    description: Returns a list of movies
+            summary: Return a list of movies
+            description: Returns a list of movies in API
+    /movies/id:
+        get:
+            tags:
+                - Movies
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                'Movie ID''s ':
+                                    value: |-
+                                        [
+                                            Movie ID: 1
+                                        ]
+                    description: Returns a list of movie ID's
+            summary: Get a list of movie ID's
+            description: Returns a list of all movie ID's in API
+components:
+    schemas:
+        Error:
+            title: Root Type for Error
+            description: Error
+            type: object
+            properties:
+                error:
+                    type: string
+            example:
+                error: Error message.
