@@ -54,8 +54,14 @@ app.post('/games', (req, res) => {
       ReviewScore: req.body.ReviewScore
     }
     games.push(game);
-    res.status(201).send(game);
+    res.status(201)
+    .location(`${getBaseURL(req)}/games/${games.length}`)
+    .send(game);
 })
 
 app.listen(port, () => {console.log(`Api on saadaval aadressil: http://localhost:${port}`);});
 
+function getBaseURL(req) {
+  return req.connection && req.connection.encrypted ?
+  "https" : "http" + `://${req.headers.host}`
+};
