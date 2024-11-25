@@ -1,9 +1,9 @@
 const port = 8080;
 const app = require('express')();
 const swaggerUI = require('swagger-ui-express');
-const swaggerDoc = require("./docs/swagger.json");
 const yamljs = require('yamljs');
-const swaggerDoc = yamljs.load('./docs/swagger/yaml');
+const swaggerDoc = yamljs.load('./docs/swagger.yaml');
+var express = require('express')
 
 
 const games = [
