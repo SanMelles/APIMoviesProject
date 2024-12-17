@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         }
     );
+    
     console.log(Game === sequelize.models.Game);
     return Game;
 }

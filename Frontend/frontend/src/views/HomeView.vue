@@ -9,7 +9,7 @@ export default {
     allGames: []
   }
 },
-  async Created() {
+  async created() {
     this.allGames = await (await fetch('http://localhost:8080/games')).json()
   }
 }

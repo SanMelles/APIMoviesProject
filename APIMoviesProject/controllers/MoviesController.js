@@ -3,18 +3,25 @@ const Utils = require("./utils");
 
 exports.getAll = async (req, res) => { 
     const games = await db.games.findAll();
-    res.send(games.map(({id, name}) => {return {id, name}}))
+    console.log(games)
+    res
+    .send(games
+        .map(({GameID, GameName}) => {return {GameID, GameName}})
+    )
 }
+
 exports.getById = async (req, res) => {
     const game = await getGame(req, res);
     if (!game) { return};
     return res.send(game);
     }
+
 exports.create = async (req, res) => {
     if (!req.body.GameName || 
         !req.body.ReleaseDateEU ||
         !req.body.ReviewScore) 
     {   return res.status(400).send({error: "One or multiple parameters are missing"});    }
+
     let newGame = {        
         GameName: req.body.GameName,
         ReleaseDateEU: req.body.ReleaseDateEU,
@@ -25,6 +32,7 @@ exports.create = async (req, res) => {
         .location(`${Utils.getBaseURL(req)}/games/${createdGame.GameID}`)
         .send(createdGame.GameID);
 }
+
 exports.editById = async (req,res) => {
     const game = await getGame(req, res);
     if (!game) { return };
@@ -40,6 +48,7 @@ exports.editById = async (req,res) => {
         .location(`${Utils.getBaseURL(req)}/games/${game.GameID}`)
         .send(game);
 }
+
 exports.deleteById = async (req, res) => {
     const game = await getGame(req,res);
     if (!game) { return };
@@ -47,6 +56,7 @@ exports.deleteById = async (req, res) => {
     res.status(204).send({error: "No Content"});
     
 }
+
 const getGame = async (req, res) => {
     const idNumber = parseInt(req.params.GameID);
     if (isNaN(idNumber)) {
