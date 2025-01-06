@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     const Comment = sequelize.define(
-        'Game',
+        'Comment',
         {
             CommentID:{
                 type: DataTypes.INTEGER,
@@ -25,16 +25,21 @@ module.exports = (sequelize, DataTypes) => {
             UserID:{
                 type: DataTypes.INTEGER,
             },
-            GameID: {
+/*             GameID: {
                 type: DataTypes.INTEGER,
                 references: {
                     model: 'Games',
-                    key: 'GameID'
+                    key: 'GameID',
+                    unique: false
                 }
-            }
+            } */
         }
     );
 
+/*     Comment.associate = (models) => {
+        Comment.belongsTo(models.Game, { foreignKey: 'GameID', as: "game"});
+    }
+ */
     console.log(Comment === sequelize.models.Comment);
     return Comment;
 }

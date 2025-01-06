@@ -23,8 +23,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
     
-    Game.hasMany(Comment)
-    Comment.belongsTo(Game)
+/*     Game.associate = (models) => {
+        Game.hasMany(models.Comment, {
+            foreignKey: 'GameID',
+            as: 'comments',
+            onDelete: 'CASCADE',
+            unique: false,
+        })
+    }
+ */
+
     console.log(Game === sequelize.models.Game);
     return Game;
 }

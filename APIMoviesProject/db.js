@@ -28,11 +28,11 @@ db.users = require("./models/User")(sequelize, DataTypes);
 db.comments = require("./models/Comment")(sequelize, DataTypes, db.games);
 
 
-db.games.hasMany(db.comments, {as: "comments"})
-db.comments.belongsTo(db.games)
+db.games.hasMany(db.comments)
+db.comments.belongsTo(db.games);
 
 const sync = (async () => {
-    await sequelize.sync({ alter: true});
+    await sequelize.sync({ force: true});
     console.log("models have been synchronised successfully")
 });
 
