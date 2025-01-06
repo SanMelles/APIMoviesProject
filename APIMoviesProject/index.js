@@ -22,6 +22,7 @@ app.get("/", (req, res) => {
 
 require("./routes/gameRoutes")(app);
 require("./routes/userRoutes")(app);
+require("./routes/commentRoutes")(app);
 
 app.listen(port, async() => {
     if (process.env.SYNC === 'true') {

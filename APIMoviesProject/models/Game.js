@@ -16,10 +16,15 @@ module.exports = (sequelize, DataTypes) => {
             },
             ReviewScore: {
                 type: DataTypes.DECIMAL
+            },
+            Comment: {
+                
             }
         }
     );
     
+    Game.hasMany(Comment)
+    Comment.belongsTo(Game)
     console.log(Game === sequelize.models.Game);
     return Game;
 }
