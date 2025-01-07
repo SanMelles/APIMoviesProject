@@ -3,7 +3,7 @@ export default {
     
     props: 
     {
-        target: "" /* fix this, str->ctor */
+        target: String,
     },
     emits: ['confirmed']
 }
@@ -26,7 +26,7 @@ export default {
                     Please confirm that this is your desired action.
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-success" @click="$emit{'confirmed'}" data-bs-dismiss="modal">
+                    <button class="btn btn-success" @click="$emit('confirmed')" data-bs-dismiss="modal">
                     YES
                     </button>
                     <button type="button" class="btn btn-secondary" :data-bs-target="target" data-bs-toggle="modal">
