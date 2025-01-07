@@ -24,8 +24,8 @@ export default {
                         v-if="isEditing" 
                         v-model:id="modifiedGame.id" 
                         v-model:GameName="modifiedGame.GameName" 
-                        v-model:GameName="modifiedGame.ReleaseEU" 
-                        v-model:GameName="modifiedGame.ReviewScore" >
+                        v-model:ReleaseEU="modifiedGame.ReleaseEU" 
+                        v-model:ReviewScore="modifiedGame.ReviewScore" >
                         </game-form>
 
                         <game-details v-else :gameInModal="gameInModal">

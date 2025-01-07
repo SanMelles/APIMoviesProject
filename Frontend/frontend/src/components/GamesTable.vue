@@ -17,8 +17,8 @@ export default {
         </thead>
         <tbody>
             <tr v-for="item in items" :key="item.GameID">
-                <td>{{ item.GameID }}</td>
                 <td>{{ item.GameName }}</td>
+                <td>{{ item.ReviewScore }}</td>
             </tr>
         </tbody>
     </table>
