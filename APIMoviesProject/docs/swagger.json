@@ -1,0 +1,43 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "BideoGamTARge23",
+        "version": "1.0.0",
+        "description": "games api"
+    },
+    "paths": {
+        "/games": {
+            "get": {
+                "tags": [
+                    "games"
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "examples": {
+                                    "List of games": {
+                                        "value": [
+                                            "Throne & Liberty",
+                                            "Goat Simulator",
+                                            "Team Fortress 2"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "Returns a list of games"
+                    }
+                },
+                "summary": "get list of all games from api",
+                "description": "Returns a list of all games in the API to the requesting user."
+            }
+        }
+    }
+}

@@ -5,20 +5,17 @@ module.exports = (sequelize, DataTypes) => {
             GameID:{
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
-                primarykey: true,
+                primaryKey: true,
             },
             GameName: {
                 type: DataTypes.STRING,
-                allownull: false,
+                allowNull: false,
             },
             ReleaseDateEU: {
                 type: DataTypes.DATEONLY
             },
             ReviewScore: {
                 type: DataTypes.DECIMAL
-            },
-            Comment: {
-                
             }
         }
     );
