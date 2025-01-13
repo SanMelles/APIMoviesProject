@@ -5,11 +5,11 @@ module.exports = (sequelize, DataTypes) => {
             GameID:{
                 type: DataTypes.INTEGER,
                 autoIncrement: true,
-                primarykey: true,
+                primaryKey: true,
             },
             GameName: {
                 type: DataTypes.STRING,
-                allownull: false,
+                allowNull: false,
             },
             ReleaseDateEU: {
                 type: DataTypes.DATEONLY
@@ -20,6 +20,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     );
     
+/*     Game.associate = (models) => {
+        Game.hasMany(models.Comment, {
+            foreignKey: 'GameID',
+            as: 'comments',
+            onDelete: 'CASCADE',
+            unique: false,
+        })
+    }
+ */
+
     console.log(Game === sequelize.models.Game);
     return Game;
 }
