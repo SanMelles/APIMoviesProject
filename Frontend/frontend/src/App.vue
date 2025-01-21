@@ -7,6 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <div>
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/movies">Movies</RouterLink>
         <RouterLink to="/usersView">Users</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
@@ -49,17 +50,23 @@ nav a:first-of-type {
 @media (min-width: 1024px) {
   header {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    align-items: center; /* Aligns header content vertically */
+    justify-content: space-between; /* Spreads header content horizontally */
+    padding-right: calc(var(--section-gap) / 2); /* Ensures proper padding */
   }
 
   nav {
+    display: flex; /* Lays out navigation links horizontally */
+    justify-content: flex-start; /* Aligns links to the left */
+    align-items: center; /* Aligns links vertically */
     text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
+    margin: 0; /* Resets margin to prevent layout issues */
+    padding: 0; /* Resets padding for consistency */
+    font-size: 1rem; /* Increases font size for larger screens */
+  }
 
-    padding: 1rem 0;
-    margin-top: 1rem;
+  nav a {
+    padding: 0 1rem; /* Adds spacing between links */
   }
 }
 </style>
