@@ -33,7 +33,7 @@ db.games.hasMany(db.comments)
 db.comments.belongsTo(db.games);
 
 const sync = (async () => {
-    await sequelize.sync({ force: true});
+    await sequelize.sync({ alter: true});
     console.log("models have been synchronised successfully")
 });
 

@@ -94,6 +94,273 @@ paths:
                     $ref: '#/components/responses/404'
             summary: Get a list of movie ID's
             description: Returns full details of a movie
+        put:
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    type: string
+                            examples:
+                                Response Sample:
+                                    value:
+                                        GameID: '2'
+                                        GameName: 'Elder scrolls 3: Morrowind'
+                                        ReleaseDateEU: 2001.01.02
+                                        ReviewScore: '8'
+                    description: |
+                        Returns the modified Movie to the user
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                User has not added required parameters to the modified Movie:
+                                    value:
+                                        -
+                                            error: One or multiple parameters are missing
+                    description: User has not added required parameters to the modified Movie
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                Error:
+                                    value:
+                                        -
+                                            error: Game not found
+                    description: The Movie to be updated is not found in the array.
+            summary: Update a Movie
+            description: 'Returns updated movie, when modification of a movie is successful.'
+        delete:
+            responses:
+                '204':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                Delete:
+                                    value: '"1"'
+                    description: Delete movie
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                Movie ID error:
+                                    value:
+                                        -
+                                            error: Movie with this ID was not found
+                    description: Movie ID error
+            summary: Delete a specific movie
+            description: Delete a movie from the array based on given id
+        parameters:
+            -
+                name: id
+                in: path
+                required: true
+    /users:
+        get:
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                            examples:
+                                User:
+                                    value:
+                                        -
+                                            UserID: 12
+                                            Username: s5eif
+                                            FirstName: w52oiy
+                                            LastName: ''
+                                            Email: ho
+                                            SecureLevel: 5
+                                            LevelKey: 15
+                    description: Gets all users for the requester
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items: {}
+                    description: Add a new user
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                Parameter error:
+                                    value:
+                                        -
+                                            error: Missing a parameter
+                    description: Parameter error
+            description: Sends all users to requester
+    '/users/{id}':
+        get:
+            parameters:
+                -
+                    name: id
+                    in: path
+                    required: true
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                            examples:
+                                User:
+                                    value:
+                                        -
+                                            UserID: 75
+                                            Username: '1'
+                                            FirstName: 0xm18
+                                            LastName: ''
+                                            Email: v6
+                                            SecureLevel: 50
+                                            LevelKey: 39
+                    description: Gets single user for the requester
+            summary: Get single user
+            description: Gets a single user for the requester
+        put:
+            parameters:
+                -
+                    name: id
+                    in: path
+                    required: true
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/User'
+                            examples:
+                                Change User ID:
+                                    value:
+                                        -
+                                            UserID: 29
+                                            Username: 19g
+                                            FirstName: ao5
+                                            LastName: r
+                                            Email: ''
+                                            SecureLevel: 54
+                                            LevelKey: 66
+                    description: Modify user
+                '400':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                User missing params:
+                                    value:
+                                        -
+                                            error: User to be modified is missing parameters
+                    description: User to be modified is missing parameters
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                No user with ID:
+                                    value:
+                                        -
+                                            error: User with this ID was not found
+                    description: User with this ID was not found
+        delete:
+            parameters:
+                -
+                    name: id
+                    in: path
+                    required: true
+            responses:
+                '204':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                User Deleted:
+                                    value:
+                                        -
+                                            error: No Content
+                    description: Deletion was successful
+                '404':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                User with ID not found:
+                                    value:
+                                        -
+                                            error: User not found
+                    description: User with this id was not found
+    /comments:
+        get:
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/comment'
+                            examples:
+                                Get Comment:
+                                    value:
+                                        -
+                                            -
+                                                CommentID: 7
+                                                CommentText: ''
+                                            -
+                                                CommentID: 88
+                                                CommentText: j
+                    description: List of comments from the API
+            summary: List of comments from the API
+        post:
+            responses:
+                '201':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/comment'
+                            examples:
+                                Comment creation:
+                                    value:
+                                        -
+                                            -
+                                                CommentText: ayj0g
+                                                UpvoteCount: 2
+                                                DownvoteCount: 67
+                                                GameGameID: 61
+                    description: Comment creation was successful
+            summary: Creation of comment successful
+    '/comments/{id}':
+        get:
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/comment'
+                            examples:
+                                Get specific comment:
+                                    value:
+                                        -
+                                            -
+                                                CommentID: 20
+                                                CommentText: krq6g
+                    description: Gets specific comment
+            summary: Get specified comment
         parameters:
             -
                 name: id
@@ -126,6 +393,55 @@ components:
                 GameName: 'Elder Scrolls 3: Morrowind'
                 ReleaseDateEU: 2001.01.02
                 ReviewScore: '8'
+        User:
+            title: Root Type for User
+            description: ''
+            type: object
+            properties:
+                UserID:
+                    format: int32
+                    type: integer
+                Username:
+                    type: string
+                FirstName:
+                    type: string
+                LastName:
+                    type: string
+                Email:
+                    type: string
+                SecureLevel:
+                    format: int32
+                    type: integer
+                LevelKey:
+                    format: int32
+                    type: integer
+            example:
+                ID: 1
+                Username: taavikas123
+                Firstname: Taavi
+                Lastname: Liblik
+                Email: taavi@gmail.com
+                SecureLevel: 1
+                LevelKey: 123
+        comment:
+            title: Root Type for comment
+            description: ''
+            type: array
+            items:
+                type: object
+                properties:
+                    CommentID:
+                        format: int32
+                        type: integer
+                    CommentText:
+                        type: string
+            example:
+                -
+                    CommentID: 1
+                    CommentText: ''
+                -
+                    CommentID: 2
+                    CommentText: engineer gaming ╰（‵□′）╯
     responses:
         '404':
             description: 404 Not Found

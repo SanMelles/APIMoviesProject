@@ -16,9 +16,25 @@ app.use(cors());
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send(`Server running. Documentation at <a href="http://${host}:${port}/docs">/docs</a>`);
-})
+
+app.get('/movies', (req, res) => {
+    res.send([movies]);
+});
+
+app.post('/movies', (req, res) => {
+    movies.push(req.body.name);
+    res.send([movies]);
+});
+
+app.get('/movies/:id', (req, res) => {
+    res.send(movies[req.params.id]);
+});
+
+app.put('/movies/:id', (req, res) => {
+    movies[req.params.id] = req.body.name;
+    res.send(movies[req.params.id]);
+});
+
 
 require("./routes/gameRoutes")(app);
 require("./routes/userRoutes")(app);
@@ -30,3 +46,5 @@ app.listen(port, async() => {
     }
     console.log(`Api on saadaval aadressil: http://${host}:${port}`);
 });
+
+
