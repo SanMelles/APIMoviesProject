@@ -1,6 +1,6 @@
 <script>
 export default {
-    name: "GamesTable",
+    name: "MoviesTable",
     props: {
         items: Array
     }
@@ -11,14 +11,16 @@ export default {
     <table class="table table-striped">
         <thead class="table-dark">
             <tr>
-                <th>GameName</th>
-                <th>ReviewScore</th>
+                <th>Movie</th>
+                <th>Year</th>
+                <th>Genre</th>
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in items" :key="item.GameID">
-                <td>{{ item.GameName }}</td>
-                <td>{{ item.ReviewScore }}</td>
+            <tr v-for="item in items" :key="item.MovieID">
+                <td>{{ item.MovieName }}</td>
+                <td>{{ item.ReleaseYear }}</td>
+                <td>{{ item.Genre }}</td>
             </tr>
         </tbody>
     </table>
