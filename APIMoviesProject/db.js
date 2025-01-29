@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes} = require("sequelize");
-const Game = require('./models/Game');
+const Movie = require('./models/Movie');
 
 const sequelize = new Sequelize(
     process.env.DB_DATANAME, 
@@ -24,13 +24,13 @@ const sequelize = new Sequelize(
 const db = {}
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.games = require("./models/Game")(sequelize, DataTypes);
+db.movies = require("./models/Movie")(sequelize, DataTypes);
 db.users = require("./models/User")(sequelize, DataTypes);
-db.comments = require("./models/Comment")(sequelize, DataTypes, db.games);
+db.comments = require("./models/Comment")(sequelize, DataTypes, db.movies);
 
 
-db.games.hasMany(db.comments)
-db.comments.belongsTo(db.games);
+db.movies.hasMany(db.comments)
+db.comments.belongsTo(db.movies);
 
 const sync = (async () => {
     await sequelize.sync({ alter: true});

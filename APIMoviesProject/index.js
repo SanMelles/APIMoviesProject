@@ -36,7 +36,7 @@ app.put('/movies/:id', (req, res) => {
 });
 
 
-require("./routes/gameRoutes")(app);
+require("./routes/movieRoutes")(app);
 require("./routes/userRoutes")(app);
 require("./routes/commentRoutes")(app);
 

@@ -1,17 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
-    const GameComment = sequelize.define('GameComment', {
-        GameCommentID: {
+    const MovieReview = sequelize.define('MovieReview', {
+        MovieReviewID: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        GameID: {
+        MovieID: {
             type: DataTypes.FOREIGNKEY,
             // autoIncrement: false,
             // primaryKey: false,
             references:{
                 model: Game,
-                key: "GameID"
+                key: "MovieID"
             }
         },
         CommentId: {
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
     });
-    Game.BelongsToMany(Comment, {through: GameComment})
+    Movie.BelongsToMany(Comment, {through: GameComment})
     Comment.BelongsToMany(Game, {through: GameComment})
     Game.HasMany(GameComment)
     GameComment.BelongsTo(Game)
